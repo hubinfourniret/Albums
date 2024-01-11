@@ -1,0 +1,38 @@
+main img {
+    width: 424px;
+    height: 300px;
+    margin: 1em;
+    object-fit: contain;
+    background-color: #C5283D;
+    padding: 20px;
+    border-radius: 20px;
+}
+header h1{
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000000;
+    margin-left: 2em;
+    padding: 5px
+}
+
+main {
+    padding-top: 5em;
+    display: block;
+    margin:auto;
+    width: 80%;
+}
+
+body {
+    background-color: aqua;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+#courant {
+    border: 3px #000000 solid;
+    background-color: #C5283D;
+    color: #000000;
+    border-radius: 50px;
+}
