@@ -2,7 +2,7 @@
     $cnx=mysqli_connect("localhost","root","","albums");
     
     if (mysqli_connect_error()) {
-        echo "Erreur de connexion à la base de données : ".mysqli_connect_error();
+        echo "Erreur de connexion ï¿½ la base de donnï¿½es : ".mysqli_connect_error();
         exit();
     }
 ?>
@@ -13,12 +13,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
     </head>
     <body>
         <header>
             <h1>Mes albums</h1>
             <nav>
                 <?php
+                if(!isset($_GET['id'])){
+                    $sql ="SELECT idAlb FROM `albums` LIMIT 1";
+                    $res = mysqli_query($cnx, $sql);
+                    $_GET['id']=mysqli_fetch_array($res)['idAlb'];
+                }
+                
                 $sql ="SELECT * FROM albums";
                 $res = mysqli_query($cnx, $sql);
             
@@ -27,27 +34,30 @@
                             $id=' id="courant" ';
                         }
                         else {
-                            $id='';
+                            $id= "";
                         }
                         echo '<a '.$id.'href="index.php?id='. $ligne['idAlb']. '">' .$ligne['nomAlb']. '</a>';
                 }
-
                 ?>
+                <a href="ajouterAlbum.php">+</a>
+                <a href="modifierAlbum.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/edit.png'/> </a>
             </nav>
         </header>
         <main>
+            <section>
             <?php
             $sql ="SELECT * FROM photos, comporter WHERE photos.idPh=comporter.idPh AND idAlb=".$_GET["id"];
             $res = mysqli_query($cnx, $sql);
 
             while ($ligne = mysqli_fetch_array($res)) {
                 // Afficher le nom de la photo
-                 echo '<img src="photos/'.$ligne['nomph'] . '" />';
+                echo '<img src="photos/'.$ligne['nomph'] . '" alt="Image" onclick="ouvrirImage(\''.$ligne['nomph'].'\')"/>';
             }
 
             mysqli_free_result ($res);
             mysqli_close($cnx);
             ?>
+            </section>
         </main>
     </body>
 </html>

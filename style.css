@@ -6,7 +6,9 @@ main img {
     background-color: #C5283D;
     padding: 20px;
     border-radius: 20px;
+    cursor: pointer;
 }
+
 header h1{
     text-align: center;
 }
@@ -20,8 +22,10 @@ nav a {
 
 main {
     padding-top: 5em;
-    display: block;
-    margin:auto;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: auto;
     width: 80%;
 }
 
@@ -35,4 +39,20 @@ body {
     background-color: #C5283D;
     color: #000000;
     border-radius: 50px;
+}
+
+#image {
+    display: block;
+    width: 70em;
+    height: auto;
+    object-fit: contain;
+    background-color: #C5283D;
+    padding: 20px;
+    border-radius: 20px;
+    margin: auto;
+    cursor: pointer;
+}
+
+#icn {
+    width: 30px;
 }
