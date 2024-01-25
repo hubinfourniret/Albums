@@ -40,7 +40,10 @@
                 }
                 ?>
                 <a href="ajouterAlbum.php">+</a>
-                <a href="modifierAlbum.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/edit.png'/> </a>
+                <a href="modifierAlbum.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/editAlbum.png'/></a>
+                <a href="supprimerAlbum.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/corbeille.png'/></a>
+                <a href="ajouterPhoto.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/photo.png'/></a>
+                <a href="modifierPhoto.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/editPhoto.png'/></a>
             </nav>
         </header>
         <main>

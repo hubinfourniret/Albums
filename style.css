@@ -13,6 +13,11 @@ header h1{
     text-align: center;
 }
 
+nav {
+    display: flex;
+    align-items: center;
+}
+
 nav a {
     text-decoration: none;
     color: #000000;
@@ -55,4 +60,27 @@ body {
 
 #icn {
     width: 30px;
+}
+
+.confirm {
+    text-decoration: none;
+    margin: 10px;
+}
+
+.delAlb {
+    display: flex;
+    align-items: center;
+}
+
+input {
+    margin: 10px
+}
+
+.adPhoto {
+    display: flex;
+    align-items: center;
+}
+
+table {
+    text-align: center;
 }
