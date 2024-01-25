@@ -21,7 +21,7 @@
         <script src="script.js"></script>
     </head>
     <body class="delAlb">
-        <p> Êtes vous sûr de vouloir surpprimer l'album <?=$ligne['nomAlb']?> ?</p>
+        <p> ÃŠtes vous sÃ»r de vouloir surpprimer l'album <?=$ligne['nomAlb']?> ?</p>
         <form method="post" action="supprimerAlbum.php?id=<?=$_GET['id']?>">
             <input class="confirm" type="submit" value="OUI" name="ok">
         </form>

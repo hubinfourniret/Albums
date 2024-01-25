@@ -20,7 +20,7 @@ if (empty($_POST)) {
 <body class="adPhoto">
     <form method="post" action="ajouterPhoto.php" enctype="multipart/form-data">
         <label for="nomph">Selectionnez votre photo</label>
-        <input type="file" id="nomph" name="nomph" accept="image/jpg" required>
+        <input type="file" id="nomPh" name="nomPh" accept="image/jpg" required>
         <table border='1'>
         <th colspan="2">Albums de la photo</th>
         <?php
@@ -42,12 +42,12 @@ if (empty($_POST)) {
 </html>
 <?php
 } else {
-    $sql="INSERT INTO photos (nomph) VALUES (NULL)";
+    $sql="INSERT INTO photos (nomPh) VALUES (NULL)";
     mysqli_query($cnx, $sql);
     $idPh=mysqli_insert_id($cnx);
-    $tmp_name = $_FILES["nomph"]["tmp_name"];
+    $tmp_name = $_FILES["nomPh"]["tmp_name"];
     $name = "ph_".$idPh.".jpg";
-    $sql="UPDATE `photos` SET `nomph` = '".$name."' WHERE `photos`.`idPh` = ".$idPh;
+    $sql="UPDATE `photos` SET `nomPh` = '".$name."' WHERE `photos`.`idPh` = ".$idPh;
     mysqli_query($cnx, $sql);
     move_uploaded_file($tmp_name, "photos/$name");
     

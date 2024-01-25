@@ -43,23 +43,23 @@
                 <a href="modifierAlbum.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/editAlbum.png'/></a>
                 <a href="supprimerAlbum.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/corbeille.png'/></a>
                 <a href="ajouterPhoto.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/photo.png'/></a>
-                <a href='modifierPhoto.php'><img id='icn' src='images/editPhoto.png'/></a>
+                <a href="modifierPhoto.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/editPhoto.png'/></a>
             </nav>
         </header>
         <main>
-            <section>
             <?php
             $sql ="SELECT * FROM photos, comporter WHERE photos.idPh=comporter.idPh AND idAlb=".$_GET["id"];
             $res = mysqli_query($cnx, $sql);
 
             while ($ligne = mysqli_fetch_array($res)) {
-                echo '<img src="photos/'.$ligne['nomph'] . '" alt="Image" onclick="ouvrirImage(\''.$ligne['nomph'].'\')"/>';
+                echo "<div>";
+                echo "<img src='photos/".$ligne['nomPh']."'class='main-img' alt='Image' onclick='ouvrirImage(\"" . $ligne['nomPh'] . "\")'/>";
+                echo "<a href='modifierPhoto.php?id=".$ligne['idPh']."'><img id='icn' src='images/editPhoto.png'/></a>";  
+                echo "</div>";
             }
-
             mysqli_free_result ($res);
             mysqli_close($cnx);
             ?>
-            </section>
         </main>
     </body>
 </html>
