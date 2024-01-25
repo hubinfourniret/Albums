@@ -43,7 +43,7 @@
                 <a href="modifierAlbum.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/editAlbum.png'/></a>
                 <a href="supprimerAlbum.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/corbeille.png'/></a>
                 <a href="ajouterPhoto.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/photo.png'/></a>
-                <a href="modifierPhoto.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/editPhoto.png'/></a>
+                <a href='modifierPhoto.php'><img id='icn' src='images/editPhoto.png'/></a>
             </nav>
         </header>
         <main>
@@ -53,7 +53,6 @@
             $res = mysqli_query($cnx, $sql);
 
             while ($ligne = mysqli_fetch_array($res)) {
-                // Afficher le nom de la photo
                 echo '<img src="photos/'.$ligne['nomph'] . '" alt="Image" onclick="ouvrirImage(\''.$ligne['nomph'].'\')"/>';
             }
 
