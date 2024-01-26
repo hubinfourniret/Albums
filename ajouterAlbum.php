@@ -10,7 +10,7 @@ if (empty($_POST)) {
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
-<body>
+<body class='body-modif'>
     <form method="post" action="ajouterAlbum.php">
         <label for="nomAlb">Nom de l'album</label>
         <input type="text" id="nomAlb" name="nomAlb" placeholder="Entrez le nom de l'album ..." required>

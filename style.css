@@ -1,18 +1,42 @@
+/*ALL*/
+body {
+    background-color: #E9F1F7;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.body-modif{
+    display: flex;
+    align-items: center;
+}
+
+/*Index*/
 .main-img {
     width: 424px;
     height: 300px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
 }
 
 main div {
     object-fit: contain;
-    background-color: #C5283D;
-    padding: 20px;
+    background-color: #3F84E5;
+    padding: 2px;
     border-radius: 20px;
     cursor: pointer;
-    margin: 1em;
+    margin: 0.5em;
+    display: flex;
+    align-items: center;
+}
+
+.main-index {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(484px, 510px));
+    gap: 16px;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+    padding-top: 5em;
 }
 
 header h1{
@@ -31,60 +55,38 @@ nav a {
     padding: 5px
 }
 
-main {
-    padding-top: 5em;
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin: auto;
-    width: 80%;
-}
-
-body {
-    background-color: aqua;
-    font-family: Arial, Helvetica, sans-serif
-}
-
 #courant {
     border: 3px #000000 solid;
-    background-color: #C5283D;
+    background-color: #3F84E5;
     color: #000000;
     border-radius: 50px;
 }
+
+#icn {
+    width: 30px;
+}
+/*Image ouverte*/
 
 #image {
     display: block;
     width: 70em;
     height: auto;
     object-fit: contain;
-    background-color: #C5283D;
+    background-color: #3F84E5;
     padding: 20px;
     border-radius: 20px;
     margin: auto;
     cursor: pointer;
 }
 
-#icn {
-    width: 30px;
-}
-
+/*Delete*/
 .confirm {
     text-decoration: none;
     margin: 10px;
 }
 
-.delAlb {
-    display: flex;
-    align-items: center;
-}
-
 input {
     margin: 10px
-}
-
-.adPhoto {
-    display: flex;
-    align-items: center;
 }
 
 table {

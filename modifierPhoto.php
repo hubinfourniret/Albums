@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
     </head>
-    <body class="adPhoto">
+    <body class="body-modif">
         <form method="post" action="ajouterPhoto.php" enctype="multipart/form-data">
             <label>Choisissez l'Album(s) de la photo<?php echo $_GET['id']?></label>
             <table border='1'>
