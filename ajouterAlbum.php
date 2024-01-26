@@ -14,7 +14,6 @@ if (empty($_POST)) {
     <form method="post" action="ajouterAlbum.php">
         <label for="nomAlb">Nom de l'album</label>
         <input type="text" id="nomAlb" name="nomAlb" placeholder="Entrez le nom de l'album ..." required>
-        <br /> 
         <input type="submit" value="Enregistrer" name="ok">
     </form>
 </body>

@@ -24,7 +24,6 @@
                 <form method="post" action="modifierAlbum.php?id=<?php echo $_GET['id']?>">
                     <label for="nomAlb">Nom de l'album</label>
                     <input type="text" id="nomAlb" name="nomAlb" value="<?php echo $nomAlb;?>" placeholder="Entrez le nom de l'album ..." required>
-                    <br /> 
                     <input type="submit" value="Enregistrer" name="ok">
                 </form>
             </body>

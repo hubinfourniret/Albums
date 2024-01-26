@@ -54,7 +54,7 @@
                 echo "<div>";
                 echo "<img src='photos/".$ligne['nomPh']."'class='main-img' alt='Image' onclick='ouvrirImage(\"" . $ligne['nomPh'] . "\")'/>";
                 echo "<a href='modifierPhoto.php?id=".$ligne['idPh']."'><img id='icn' src='images/editPhoto.png'/></a>";
-                echo "<a href='supprimerPhoto.php?id=".$ligne['idPh']."'><img id='icn' src='images/corbeille.png'/></a>";
+                echo "<a href='supprimerPhoto.php?id=".$ligne['idPh']."&idAlb=".$_GET['id']."'><img id='icn' src='images/corbeille.png'/></a>";
                 echo "</div>";
             }
             mysqli_free_result ($res);

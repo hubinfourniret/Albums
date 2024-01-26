@@ -16,13 +16,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Confirmation de suppression</title>
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
     </head>
     <body class="body-modif">
         <p> Êtes vous sûr de vouloir surpprimer la photo <?=$ligne['nomPh']?> ?</p>
-        <form method="post" action="supprimerPhoto.php?id=<?=$_GET['id']?>">
+        <form method="post" action="supprimerPhoto.php?id=<?=$_GET['id']?>&idAlb=<?=$_GET['idAlb']?>">
             <input class="confirm" type="submit" value="OUI" name="ok">
         </form>
         <form method="post" action="index.php">
@@ -32,7 +32,7 @@
 </html>
 <?php
     } else {
-        $sql = "DELETE FROM comporter WHERE comporter.idPh = ".$_GET['id']; 
+        $sql = "DELETE FROM comporter WHERE comporter.idAlb = ".$_GET['idAlb']." AND comporter.idPh = ".$_GET['id'];
         mysqli_query($cnx, $sql);
 
         mysqli_close($cnx);
