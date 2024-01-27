@@ -40,7 +40,7 @@
                 }
                 ?>
                 <a href="ajouterAlbum.php">+</a>
-                <a href="modifierAlbum.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/editAlbum.png'/></a>
+                <a href="modifierAlbum.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/edit.png'/></a>
                 <a href="supprimerAlbum.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/corbeille.png'/></a>
                 <a href="ajouterPhoto.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/photo.png'/></a>
             </nav>
@@ -53,7 +53,7 @@
             while ($ligne = mysqli_fetch_array($res)) {
                 echo "<div>";
                 echo "<img src='photos/".$ligne['nomPh']."'class='main-img' alt='Image' onclick='ouvrirImage(\"" . $ligne['nomPh'] . "\")'/>";
-                echo "<a href='modifierPhoto.php?id=".$ligne['idPh']."'><img id='icn' src='images/editPhoto.png'/></a>";
+                echo "<a href='modifierPhoto.php?id=".$ligne['idPh']."'><img id='icn' src='images/edit.png'/></a>";
                 echo "<a href='supprimerPhoto.php?id=".$ligne['idPh']."&idAlb=".$_GET['id']."'><img id='icn' src='images/corbeille.png'/></a>";
                 echo "</div>";
             }
