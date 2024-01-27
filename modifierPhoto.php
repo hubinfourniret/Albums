@@ -20,10 +20,10 @@
         <script src="script.js"></script>
     </head>
     <body class="body-modif">
-        <form method="post" action="ajouterPhoto.php" enctype="multipart/form-data">
-            <label>Choisissez l'Album(s) de la photo<?php echo $_GET['id']?></label>
+        <form method="post" action="modifierPhoto.php?id=<?php echo $_GET['id']?>" enctype="multipart/form-data">
+            <label>Classez la photo dans l'abum(s) :</label>
             <table border='1'>
-            <th colspan="2">Choisissez l'Album(s) de la photo</th>
+            <th colspan="2">Albums</th>
             <?php
             $sql = "SELECT * FROM albums";
             $res = mysqli_query($cnx, $sql);

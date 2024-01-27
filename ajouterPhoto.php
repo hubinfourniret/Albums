@@ -19,10 +19,10 @@ if (empty($_POST)) {
 </head>
 <body class="body-modif">
     <form method="post" action="ajouterPhoto.php" enctype="multipart/form-data">
-        <label for="nomph">Selectionnez votre photo</label>
+        <label for="nomph">Importez votre photo</label>
         <input type="file" id="nomPh" name="nomPh" accept="image/jpg" required>
         <table border='1'>
-        <th colspan="2">Albums de la photo</th>
+        <th colspan="2">Choisir album(s) de la photo</th>
         <?php
         $sql = "SELECT * FROM albums";
         $res = mysqli_query($cnx, $sql);
