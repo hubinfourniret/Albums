@@ -76,6 +76,8 @@
             echo "<div class='photoPlus'>";
             echo "<a href='ajouterPhoto.php?id=".$_GET['id']."'> <img src='images/plus.png'/></a>";
             }
+            /*$sql=SELECT * FROM albums, useralbums WHERE albums.idAlb=useralbums.idAlb AND idUser=1;    pour récuperer tout les albums de l'utilisateur 1         pour le menu nav
+    $res = mysqli_query($cnx, $sql);*/
             ?>
         </div>
         </main>

@@ -23,21 +23,24 @@
         <div class="divSup">
             <p> Êtes vous sûr de vouloir surpprimer la photo <?=$ligne['nomPh']?> ?</p>
             <form method="post" action="supprimerPhoto.php?id=<?=$_GET['id']?>&idAlb=<?=$_GET['idAlb']?>">
-                <input class="confirm" type="submit" value="OUI" name="ok">
-            </form>
-            <form method="post" action="index.php">
-                <input class="confirm" type="submit" value="NON" name="ok">
+                <input type="submit" value="Oui" name="oui">
+                <input type="submit" value="Non" name="non">
             </form>
         </div>
     </body>
 </html>
 <?php
     } else {
+        if (isset($_POST['non'])){
+            mysqli_close($cnx);
+            header("Location: index.php?id=".$_GET['idAlb']);
+        } else{
         $sql = "DELETE FROM comporter WHERE comporter.idAlb = ".$_GET['idAlb']." AND comporter.idPh = ".$_GET['id'];
         mysqli_query($cnx, $sql);
 
         mysqli_close($cnx);
         header("Location: index.php?id=".$_GET['idAlb']);
+        }
 }
 ?>
 

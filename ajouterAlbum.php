@@ -12,30 +12,33 @@ if (empty($_POST)) {
 </head>
 <body class='bodySup'>
     <div class='divSup'>
-    <form class='form' method="post" action="ajouterAlbum.php">
-        <label for="nomAlb">Ajouter un album</label>
-        <input type="text" id="nomAlb" name="nomAlb" placeholder="Entrez le nom de l'album ..." required>
-        <input type="submit" value="Enregistrer" name="ok">
-    </form>
-    <form method="post" action="index.php?id=<?=$_GET['id']?>">
-        <input class="confirm" type="submit" value="Retour" name="ok">
-    </form>
+        <form method="post" action="ajouterAlbum.php?id=<?=$_GET['id']?>">
+            <label for="nomAlb">Ajouter un album</label>
+            <input type="text" id="nomAlb" name="nomAlb" placeholder="Entrez le nom de l'album ...">
+            <input type="submit" value="Enregistrer" name="enregistrer">
+            <input type="submit" value="retour" name="retour">
+        </form>
+    </div>
 </body>
 </html>
 <?php
 } else {
-    $cnx=mysqli_connect("localhost","root","","albums");
+    if (isset($_POST['retour'])){
+        header("Location: index.php?id=".$_GET['id']);
+    }else {
+        $cnx=mysqli_connect("localhost","root","","albums");
+        
+        if (mysqli_connect_error()) {
+            echo "Erreur de connexion a la base de donnees : ".mysqli_connect_error();
+            exit();
+        }
     
-    if (mysqli_connect_error()) {
-        echo "Erreur de connexion a la base de donnees : ".mysqli_connect_error();
-        exit();
+        $sql="INSERT INTO `albums` (`idAlb`, `nomAlb`) VALUES (NULL, '".$_POST['nomAlb']."')";
+        mysqli_query($cnx, $sql);
+        $id=mysqli_insert_id($cnx);
+        mysqli_close($cnx);
+        header("Location: index.php?id=".$id);
     }
- 
-    $sql="INSERT INTO `albums` (`idAlb`, `nomAlb`) VALUES (NULL, '".$_POST['nomAlb']."')";
-    mysqli_query($cnx, $sql);
-    $id=mysqli_insert_id($cnx);
-    mysqli_close($cnx);
-    header("Location: index.php?id=".$id);
 }
 ?>
 

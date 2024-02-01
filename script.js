@@ -11,3 +11,25 @@ function ouvrirImage(src) {
     }
 }
 
+/*<script>
+            function validateForm() {
+                var retourButton = document.getElementsByName("retour")[0];
+                var enregistrerButton = document.getElementsByName("enregistrer")[0];
+
+                // Si le bouton "Retour" a été cliqué, désactivez la validation
+                if (retourButton && retourButton.clicked) {
+                    document.getElementById('nomAlb').removeAttribute('required');
+                }
+
+                return true;
+            }
+
+            // Fonction pour détecter quel bouton a été cliqué
+            document.addEventListener("click", function (event) {
+                var target = event.target;
+
+                if (target.type === "submit") {
+                    target.form.clicked = target.name;
+                }
+            });
+        </script>*/

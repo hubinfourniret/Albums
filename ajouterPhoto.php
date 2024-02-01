@@ -19,9 +19,9 @@ if (empty($_POST)) {
     </head>
     <body class='bodySup'>
         <div class='divSup'>
-            <form method="post" action="ajouterPhoto.php" enctype="multipart/form-data">
+            <form method="post" action="ajouterPhoto.php?id=<?=$_GET['id']?>" enctype="multipart/form-data">
                 <label for="nomph">Importez votre photo</label>
-                <input type="file" id="nomPh" name="nomPh" accept="image/jpg" required>
+                <input type="file" id="nomPh" name="nomPh" accept="image/jpg">
                 <table border='1'>
                 <th colspan="2">Choisir album(s) de la photo</th>
                 <?php
@@ -37,16 +37,17 @@ if (empty($_POST)) {
                 ?>
                 </table>
                 <br />
-                <input type="submit" value="Enregistrer" name="ok">
-            </form>
-            <form method="post" action="index.php?id=<?=$_GET['id']?>">
-                <input class="confirm" type="submit" value="Retour" name="ok">
-            </form>
+                <input type="submit" value="Enregistrer" name="enregistrer">
+                <input type="submit" value="retour" name="retour">
         </div>
     </body>
 </html>
 <?php
 } else {
+    if (isset($_POST['retour'])){
+        mysqli_close($cnx);
+        header("Location: index.php?id=".$_GET['idAlb']);
+    }else {
     $sql="INSERT INTO photos (nomPh) VALUES (NULL)";
     mysqli_query($cnx, $sql);
     $idPh=mysqli_insert_id($cnx);
@@ -73,6 +74,7 @@ if (empty($_POST)) {
         }
     }*/
     mysqli_close($cnx);
-    header("Location: index.php");
+    header("Location: index.php?id=".$_GET['id']);
+    }
 }
 ?>

@@ -23,20 +23,23 @@
         <div class="divSup">
             <p> Êtes vous sûr de vouloir surpprimer l'album <?=$ligne['nomAlb']?> ?</p>
             <form method="post" action="supprimerAlbum.php?id=<?=$_GET['id']?>">
-                <input class="confirm" type="submit" value="Oui" name="ok">
-            </form>
-            <form method="post" action="index.php?id=<?=$_GET['id']?>">
-                <input class="confirm" type="submit" value="Non" name="ok">
+            <input type="submit" value="Oui" name="oui">
+            <input type="submit" value="Non" name="non">
             </form>
         </div>
     </body>
 </html>
 <?php
     } else {
-        $sql = "DELETE FROM `albums` WHERE `idAlb` =".$_GET['id'];
-        mysqli_query($cnx, $sql);
-        mysqli_close($cnx);
-        header("Location: index.php");
+        if (isset($_POST['non'])){
+            mysqli_close($cnx);
+            header("Location: index.php?id=".$_GET['id']);
+        }else {
+            $sql = "DELETE FROM `albums` WHERE `idAlb` =".$_GET['id'];
+            mysqli_query($cnx, $sql);
+            mysqli_close($cnx);
+            header("Location: index.php");
+        }
 }
 ?>
 

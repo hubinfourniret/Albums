@@ -18,8 +18,8 @@
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
     </head>
-    <body class="body-modif">
-        <form class="form" method="post" action="login.php">
+    <body class="bodySup">
+        <form class="divSup" method="post" action="login.php">
             <label for='identifiant'>Identifiant</label>
             <input type="text" id="identifiant" name="identifiant" placeholder="Entrez votre identifiant ..." required>
             <label for=''>Mot de passe</label>

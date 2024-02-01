@@ -22,23 +22,26 @@
     </head>
     <body class='bodySup'>
         <div class='divSup'>
-            <form class="form" method="post" action="modifierAlbum.php?id=<?php echo $_GET['id']?>">
+            <form method="post" action="modifierAlbum.php?id=<?php echo $_GET['id']?>">
                 <label for="nomAlb">Modifier le nom de l'album</label>
                 <input type="text" id="nomAlb" name="nomAlb" value="<?php echo $nomAlb;?>" placeholder="Entrez le nouveau nom ..." required>
-                <input type="submit" value="Enregistrer" name="ok">
-            </form>
-                <form method="post" action="index.php?id=<?=$_GET['id']?>">
-                <input class="confirm" type="submit" value="Retour" name="ok">
+                <input type="submit" value="Enregistrer" name="enregistrer">
+                <input type="submit" value="retour" name="retour">
             </form>
         </div>
     </body>
 </html>
 <?php
     } else {
-        $sql="UPDATE albums SET nomAlb = '".$_POST['nomAlb']."' WHERE idAlb ='".$_GET["id"]."'";
-        mysqli_query($cnx, $sql);
-        mysqli_close($cnx);
-        header("Location: index.php?id=".$_GET["id"]);
+        if (isset($_POST['retour'])){
+            mysqli_close($cnx);
+            header("Location: index.php?id=".$_GET['id']);
+        }else {
+            $sql="UPDATE albums SET nomAlb = '".$_POST['nomAlb']."' WHERE idAlb ='".$_GET["id"]."'";
+            mysqli_query($cnx, $sql);
+            mysqli_close($cnx);
+            header("Location: index.php?id=".$_GET["id"]);
+        }
     }
 ?>
 

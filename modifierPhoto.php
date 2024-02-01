@@ -39,16 +39,18 @@
                 ?>
                 </table>
                 <br />
-                <input type="submit" value="Enregistrer" name="ok">
-            </form>
-            <form method="post" action="index.php?id=<?=$_GET['idAlb']?>">
-                <input class="confirm" type="submit" value="Retour" name="ok">
+                <input type="submit" value="Enregistrer" name="enregistrer">
+                <input type="submit" value="retour" name="retour">
             </form>
         </div>
     </body>
 </html>
 <?php
     } else {
+        if (isset($_POST['retour'])){
+            mysqli_close($cnx);
+            header("Location: index.php?id=".$_GET['idAlb']);
+        }else {
         $sql="DELETE FROM comporter WHERE idPh = ".$_GET['id']."";
         mysqli_query($cnx, $sql);
         echo $sql;
@@ -58,6 +60,7 @@
         }
         mysqli_close($cnx);
         header("Location: index.php?id=".$_GET['idAlb']);
+        }
     }
 ?>
 
