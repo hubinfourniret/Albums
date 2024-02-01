@@ -10,35 +10,40 @@ if (empty($_POST)) {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-</head>
-<body class="body-modif">
-    <form class="form" method="post" action="ajouterPhoto.php" enctype="multipart/form-data">
-        <label for="nomph">Importez votre photo</label>
-        <input type="file" id="nomPh" name="nomPh" accept="image/jpg" required>
-        <table border='1'>
-        <th colspan="2">Choisir album(s) de la photo</th>
-        <?php
-        $sql = "SELECT * FROM albums";
-        $res = mysqli_query($cnx, $sql);
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+    <body class='bodySup'>
+        <div class='divSup'>
+            <form method="post" action="ajouterPhoto.php" enctype="multipart/form-data">
+                <label for="nomph">Importez votre photo</label>
+                <input type="file" id="nomPh" name="nomPh" accept="image/jpg" required>
+                <table border='1'>
+                <th colspan="2">Choisir album(s) de la photo</th>
+                <?php
+                $sql = "SELECT * FROM albums";
+                $res = mysqli_query($cnx, $sql);
 
-        while ($row = mysqli_fetch_assoc($res)) {
-            echo "<tr>";
-            echo "<td><label for='".$row['idAlb']."'>".$row['nomAlb']."</label></td>";
-            echo "<td><input type='checkbox' id='".$row['idAlb']."' name='album[]' value='".$row['idAlb']."' ></td>";
-            echo "</tr>";
-        }
-        ?>
-        </table>
-        <br />
-        <input type="submit" value="Enregistrer" name="ok">
-    </form>
-</body>
+                while ($row = mysqli_fetch_assoc($res)) {
+                    echo "<tr>";
+                    echo "<td><label for='".$row['idAlb']."'>".$row['nomAlb']."</label></td>";
+                    echo "<td><input type='checkbox' id='".$row['idAlb']."' name='album[]' value='".$row['idAlb']."' ></td>";
+                    echo "</tr>";
+                }
+                ?>
+                </table>
+                <br />
+                <input type="submit" value="Enregistrer" name="ok">
+            </form>
+            <form method="post" action="index.php?id=<?=$_GET['id']?>">
+                <input class="confirm" type="submit" value="Retour" name="ok">
+            </form>
+        </div>
+    </body>
 </html>
 <?php
 } else {

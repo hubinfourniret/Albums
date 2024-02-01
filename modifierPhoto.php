@@ -19,26 +19,32 @@
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
     </head>
-    <body class="body-modif">
-        <form class="form" method="post" action="modifierPhoto.php?id=<?php echo $_GET['id']?>&idAlb=<?php echo $_GET['idAlb']?>" enctype="multipart/form-data">
-            <label>Classez la photo dans l'abum(s) :</label>
-            <br />
-            <table border='1'>
-            <th colspan="2">Albums</th>
-            <?php
-            $sql = "SELECT * FROM albums";
-            $res = mysqli_query($cnx, $sql);
+    <body class="bodySup">
+        <div class='divSup'>
+            <form method="post" action="modifierPhoto.php?id=<?php echo $_GET['id']?>&idAlb=<?php echo $_GET['idAlb']?>" enctype="multipart/form-data">
+                <label>Classez la photo dans l'abum(s) :</label>
+                <br />
+                <table border='1'>
+                <th colspan="2">Albums</th>
+                <?php
+                $sql = "SELECT * FROM albums";
+                $res = mysqli_query($cnx, $sql);
 
-            while ($row = mysqli_fetch_assoc($res)) {
-                echo "<tr>";
-                echo "<td><label for='".$row['idAlb']."'>".$row['nomAlb']."</label></td>";
-                echo "<td><input type='checkbox' id='".$row['idAlb']."' name='album[]' value='".$row['idAlb']."' ></td>";
-                echo "</tr>";
-            }
-            ?>
-            </table>
-            <br />
-            <input type="submit" value="Enregistrer" name="ok">
+                while ($row = mysqli_fetch_assoc($res)) {
+                    echo "<tr>";
+                    echo "<td><label for='".$row['idAlb']."'>".$row['nomAlb']."</label></td>";
+                    echo "<td><input type='checkbox' id='".$row['idAlb']."' name='album[]' value='".$row['idAlb']."' ></td>";
+                    echo "</tr>";
+                }
+                ?>
+                </table>
+                <br />
+                <input type="submit" value="Enregistrer" name="ok">
+            </form>
+            <form method="post" action="index.php?id=<?=$_GET['idAlb']?>">
+                <input class="confirm" type="submit" value="Retour" name="ok">
+            </form>
+        </div>
     </body>
 </html>
 <?php

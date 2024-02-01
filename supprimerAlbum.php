@@ -23,10 +23,10 @@
         <div class="divSup">
             <p> Êtes vous sûr de vouloir surpprimer l'album <?=$ligne['nomAlb']?> ?</p>
             <form method="post" action="supprimerAlbum.php?id=<?=$_GET['id']?>">
-                <input class="confirm" type="submit" value="OUI" name="ok">
+                <input class="confirm" type="submit" value="Oui" name="ok">
             </form>
             <form method="post" action="index.php?id=<?=$_GET['id']?>">
-                <input class="confirm" type="submit" value="NON" name="ok">
+                <input class="confirm" type="submit" value="Non" name="ok">
             </form>
         </div>
     </body>

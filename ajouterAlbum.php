@@ -18,7 +18,7 @@ if (empty($_POST)) {
         <input type="submit" value="Enregistrer" name="ok">
     </form>
     <form method="post" action="index.php?id=<?=$_GET['id']?>">
-        <input class="confirm" type="submit" value="Annulé" name="ok">
+        <input class="confirm" type="submit" value="Retour" name="ok">
     </form>
 </body>
 </html>
