@@ -1,6 +1,7 @@
 <?php
+    session_start();
+    include('fonctions.php');
     $cnx=mysqli_connect("localhost","root","","albums");
-    
     if (mysqli_connect_error()) {
         echo "Erreur de connexion � la base de donn�es : ".mysqli_connect_error();
         exit();
@@ -38,11 +39,20 @@
                         }
                         echo '<a '.$id.'href="index.php?id='. $ligne['idAlb']. '">' .$ligne['nomAlb']. '</a>';
                 }
+                if (isAdmin()){
                 ?>
-                <a href="ajouterAlbum.php">+</a>
+                <a href="ajouterAlbum.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/plus.png'/></a>
                 <a href="modifierAlbum.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/edit.png'/></a>
                 <a href="supprimerAlbum.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/corbeille.png'/></a>
-                <a href="ajouterPhoto.php?id=<?php echo $_GET['id']; ?>"> <img id='icn' src='images/photo.png'/></a>
+                <a href="deconnexion.php" class="bouton">Déconnexion</a>
+                <?php
+                }
+                if (!isAdmin()){
+                ?>
+                <a href="login.php" class="bouton">Connexion</a>
+                <?php
+                }
+                ?>
             </nav>
         </header>
         <main class='main-index'>
@@ -53,13 +63,21 @@
             while ($ligne = mysqli_fetch_array($res)) {
                 echo "<div>";
                 echo "<img src='photos/".$ligne['nomPh']."'class='main-img' alt='Image' onclick='ouvrirImage(\"" . $ligne['nomPh'] . "\")'/>";
-                echo "<a href='modifierPhoto.php?id=".$ligne['idPh']."'><img id='icn' src='images/edit.png'/></a>";
-                echo "<a href='supprimerPhoto.php?id=".$ligne['idPh']."&idAlb=".$_GET['id']."'><img id='icn' src='images/corbeille.png'/></a>";
+                if (isAdmin()){
+                echo "<a href='modifierPhoto.php?id=".$ligne['idPh']."&idAlb=".$_GET['id']."'><img class='icnImg2' src='images/edit.png'/></a>";
+                echo "<a href='supprimerPhoto.php?id=".$ligne['idPh']."&idAlb=".$_GET['id']."'><img class='icnImg1' src='images/corbeille.png'/></a>";
+                }
                 echo "</div>";
             }
             mysqli_free_result ($res);
             mysqli_close($cnx);
+            
+            if (isAdmin()){
+            echo "<div class='photoPlus'>";
+            echo "<a href='ajouterPhoto.php?id=".$_GET['id']."'> <img src='images/plus.png'/></a>";
+            }
             ?>
+        </div>
         </main>
     </body>
 </html>

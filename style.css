@@ -15,25 +15,26 @@ body {
 .main-img {
     width: 424px;
     height: 300px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
+    padding: 10px;
+    border-radius: 17px;
+    margin:auto;
 }
 
 main div {
     object-fit: contain;
     background-color: #3F84E5;
     padding: 2px;
-    border-radius: 20px;
+    border-radius: 7px;
     cursor: pointer;
     margin: 0.5em;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .main-index {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(484px, 510px));
+    grid-template-columns: repeat(auto-fill, minmax(465px, 0px));
     gap: 16px;
     justify-content: center;
     width: 90%;
@@ -58,17 +59,55 @@ nav a {
 }
 
 #courant {
-    border: 3px #000000 solid;
+    border: none;
     background-color: #3F84E5;
     color: #000000;
-    border-radius: 50px;
+    border-radius: 7px;
+    padding: 10px;
 }
 
+.photoPlus {
+    justify-content: center;
+}
+
+.bouton {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: auto;
+}
+
+.bouton:hover {
+    background-color: #45a049;
+}
+
+/* icone */
 #icn {
-    width: 30px;
+    height: 30px;
 }
-/*Image ouverte*/
 
+.icnImg1 {
+    height: 30px;
+    position: absolute;
+    bottom: 12px;
+    right: 13px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 7px;
+}
+.icnImg2 {
+    height: 30px;
+    position: absolute;
+    bottom: 12px;
+    right: 44px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 7px;
+}
+
+/*Image ouverte*/
 #image {
     display: block;
     width: 70em;
@@ -76,12 +115,12 @@ nav a {
     object-fit: contain;
     background-color: #3F84E5;
     padding: 20px;
-    border-radius: 20px;
+    border-radius: 7px;
     margin: auto;
     cursor: pointer;
 }
 
-Delete
+/*Delete*/
 .confirm {
     text-decoration: none;
     margin: 10px;
@@ -90,23 +129,19 @@ Delete
 input {
     margin: 10px
 }
-/*
-table {
-    text-align: center;
-}
 
-th {
-    padding:10px;
-}
-
-*/
-/*Tableau*/
-form {
+/*formulaire*/
+/*.form {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 400px;
+}*/
+
+.form {
+    display: flex;
+    align-items: center;
 }
 
 label {
@@ -119,7 +154,7 @@ input[type="file"] {
     margin-bottom: 16px;
     box-sizing: border-box;
 }
-
+/* tableau */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -140,6 +175,8 @@ tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
+/*decoration des boutons submit et des checbox*/
+
 input[type="submit"] {
     background-color: #4caf50;
     color: #fff;
@@ -157,3 +194,23 @@ input[type="submit"]:hover {
 input[type="checkbox"] {
     margin-right: 8px;
 }
+
+
+/*supprimer all*/
+
+.divSup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30vh;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bodySup {
+    justify-content: center;
+    display: flex;
+}
+

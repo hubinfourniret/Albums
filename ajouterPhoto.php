@@ -18,7 +18,7 @@ if (empty($_POST)) {
     <script src="script.js"></script>
 </head>
 <body class="body-modif">
-    <form method="post" action="ajouterPhoto.php" enctype="multipart/form-data">
+    <form class="form" method="post" action="ajouterPhoto.php" enctype="multipart/form-data">
         <label for="nomph">Importez votre photo</label>
         <input type="file" id="nomPh" name="nomPh" accept="image/jpg" required>
         <table border='1'>

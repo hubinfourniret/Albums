@@ -10,11 +10,15 @@ if (empty($_POST)) {
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
-<body class='body-modif'>
-    <form method="post" action="ajouterAlbum.php">
+<body class='bodySup'>
+    <div class='divSup'>
+    <form class='form' method="post" action="ajouterAlbum.php">
         <label for="nomAlb">Ajouter un album</label>
         <input type="text" id="nomAlb" name="nomAlb" placeholder="Entrez le nom de l'album ..." required>
         <input type="submit" value="Enregistrer" name="ok">
+    </form>
+    <form method="post" action="index.php?id=<?=$_GET['id']?>">
+        <input class="confirm" type="submit" value="Annulé" name="ok">
     </form>
 </body>
 </html>

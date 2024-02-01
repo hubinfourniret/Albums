@@ -20,8 +20,9 @@
         <script src="script.js"></script>
     </head>
     <body class="body-modif">
-        <form method="post" action="modifierPhoto.php?id=<?php echo $_GET['id']?>" enctype="multipart/form-data">
+        <form class="form" method="post" action="modifierPhoto.php?id=<?php echo $_GET['id']?>&idAlb=<?php echo $_GET['idAlb']?>" enctype="multipart/form-data">
             <label>Classez la photo dans l'abum(s) :</label>
+            <br />
             <table border='1'>
             <th colspan="2">Albums</th>
             <?php
@@ -50,7 +51,7 @@
             mysqli_query($cnx, $sql);
         }
         mysqli_close($cnx);
-        header("Location: index.php");
+        header("Location: index.php?id=".$_GET['idAlb']);
     }
 ?>
 
