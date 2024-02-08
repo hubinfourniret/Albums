@@ -56,13 +56,15 @@ if (empty($_POST)) {
     $sql="UPDATE `photos` SET `nomPh` = '".$name."' WHERE `photos`.`idPh` = ".$idPh;
     mysqli_query($cnx, $sql);
     move_uploaded_file($tmp_name, "photos/$name");
-    
-
     foreach($_POST['album'] AS $idAlb){
         $sql="INSERT INTO comporter (idAlb, idPh) VALUES ('".$idAlb."', '".$idPh."')";
         mysqli_query($cnx, $sql);
     }
-            /*
+    mysqli_close($cnx);
+    header("Location: index.php?id=".$_GET['id']);
+    }
+}
+/*
     foreach ($_FILES["nomph"]["error"] as $key => $error) {
         if ($error == 0) {
             $tmp_name = $_FILES["nomph"]["tmp_name"][$key];
@@ -73,8 +75,4 @@ if (empty($_POST)) {
             mysqli_query($cnx, $sql);
         }
     }*/
-    mysqli_close($cnx);
-    header("Location: index.php?id=".$_GET['id']);
-    }
-}
 ?>
