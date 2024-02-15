@@ -1,4 +1,5 @@
 <?php
+include("fonctions.php");
 if (empty($_POST)) {
 ?>
 <!DOCTYPE html>
@@ -32,10 +33,8 @@ if (empty($_POST)) {
             echo "Erreur de connexion a la base de donnees : ".mysqli_connect_error();
             exit();
         }
-    
-        $sql="INSERT INTO `albums` (`idAlb`, `nomAlb`) VALUES (NULL, '".$_POST['nomAlb']."')";
-        mysqli_query($cnx, $sql);
-        $id=mysqli_insert_id($cnx);
+        $nomAlb=$_POST['nomAlb'];
+        $id=edit('albums',['idAlb'=>'NULL','nomAlb'=>$nomAlb]);
         mysqli_close($cnx);
         header("Location: index.php?id=".$id);
     }

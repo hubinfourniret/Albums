@@ -1,13 +1,15 @@
 <?php
+    include("fonctions.php");
+    $id=$_GET['id'];
     $cnx=mysqli_connect("localhost","root","","albums");
     
     if (mysqli_connect_error()) {
         echo "Erreur de connexion a la base de donnees : ".mysqli_connect_error();
         exit();
     }
+
     if (empty($_POST)) {
-        $sql = "SELECT nomAlb FROM albums WHERE idAlb = '".$_GET['id']."'";
-        $res = mysqli_query($cnx, $sql);
+        $res=select(['albums'],['idAlb'=>$id]);
         $ligne = mysqli_fetch_array($res)
 ?>
 <!DOCTYPE html>
@@ -35,8 +37,7 @@
             mysqli_close($cnx);
             header("Location: index.php?id=".$_GET['id']);
         }else {
-            $sql = "DELETE FROM `albums` WHERE `idAlb` =".$_GET['id'];
-            mysqli_query($cnx, $sql);
+            delete('albums',$id);
             mysqli_close($cnx);
             header("Location: index.php");
         }

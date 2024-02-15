@@ -1,4 +1,6 @@
 <?php
+    include("fonctions.php");
+    $id=$_GET["id"];
     $cnx=mysqli_connect("localhost","root","","albums");
     
     if (mysqli_connect_error()) {
@@ -7,8 +9,7 @@
     }
 
     if (empty($_POST)) {
-        $sql="SELECT * FROM albums WHERE idAlb=".$_GET["id"];
-        $res=mysqli_query($cnx, $sql);
+        $res=select(['albums'],['idAlb'=>$id]);
         $nomAlb=mysqli_fetch_array($res)["nomAlb"];
 ?>
 <!DOCTYPE html>
@@ -37,8 +38,8 @@
             mysqli_close($cnx);
             header("Location: index.php?id=".$_GET['id']);
         }else {
-            $sql="UPDATE albums SET nomAlb = '".$_POST['nomAlb']."' WHERE idAlb ='".$_GET["id"]."'";
-            mysqli_query($cnx, $sql);
+            $nomAlb=$_POST['nomAlb'];
+            edit('albums',['nomAlb'=>$nomAlb],$id);
             mysqli_close($cnx);
             header("Location: index.php?id=".$_GET["id"]);
         }

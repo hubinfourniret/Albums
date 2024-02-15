@@ -27,8 +27,7 @@
                     $_GET['id']=mysqli_fetch_array($res)['idAlb'];
                 }
                 
-                $sql ="SELECT * FROM albums";
-                $res = mysqli_query($cnx, $sql);
+                $res=select(['albums']);
             
                 while ($ligne = mysqli_fetch_array($res)) {
                         if($ligne["idAlb"]==$_GET["id"]){
@@ -57,15 +56,15 @@
         </header>
         <main class='main-index'>
             <?php
-            $sql ="SELECT * FROM photos, comporter WHERE photos.idPh=comporter.idPh AND idAlb=".$_GET["id"];
-            $res = mysqli_query($cnx, $sql);
+            $id=$_GET["id"];
+            $res=select(['photos','comporter'],['photos.idPh'=>'comporter.idPh','idAlb'=>$id]);
 
             while ($ligne = mysqli_fetch_array($res)) {
                 echo "<div>";
                 echo "<img src='photos/".$ligne['nomPh']."'class='main-img' alt='Image' onclick='ouvrirImage(\"" . $ligne['nomPh'] . "\")'/>";
                 if (isAdmin()){
-                echo "<a href='modifierPhoto.php?id=".$ligne['idPh']."&idAlb=".$_GET['id']."'><img class='icnImg2' src='images/edit.png'/></a>";
-                echo "<a href='supprimerPhoto.php?id=".$ligne['idPh']."&idAlb=".$_GET['id']."'><img class='icnImg1' src='images/corbeille.png'/></a>";
+                echo "<a href='modifierPhoto.php?id=".$ligne['idPh']."&idAlb=".$id."'><img class='icnImg2' src='images/edit.png'/></a>";
+                echo "<a href='supprimerPhoto.php?id=".$ligne['idPh']."&idAlb=".$id."'><img class='icnImg1' src='images/corbeille.png'/></a>";
                 }
                 echo "</div>";
             }
@@ -73,11 +72,11 @@
             mysqli_close($cnx);
             
             if (isAdmin()){
-            echo "<div class='photoPlus'>";
-            echo "<a href='ajouterPhoto.php?id=".$_GET['id']."'> <img src='images/plus.png'/></a>";
+                echo "<div class='photoPlus'>";
+                echo "<a href='ajouterPhoto.php?id=".$id."'> <img src='images/plus.png'/></a>";
             }
             /*$sql=SELECT * FROM albums, useralbums WHERE albums.idAlb=useralbums.idAlb AND idUser=1;    pour récuperer tout les albums de l'utilisateur 1         pour le menu nav
-    $res = mysqli_query($cnx, $sql);*/
+            $res = mysqli_query($cnx, $sql);*/
             ?>
         </div>
         </main>

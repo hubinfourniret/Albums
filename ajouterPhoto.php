@@ -1,6 +1,7 @@
 <?php
+include("fonctions.php");
+
 $cnx=mysqli_connect("localhost","root","","albums");
-    
 if (mysqli_connect_error()) {
     echo "Erreur de connexion a la base de donnees : ".mysqli_connect_error();
     exit();
@@ -48,31 +49,16 @@ if (empty($_POST)) {
         mysqli_close($cnx);
         header("Location: index.php?id=".$_GET['idAlb']);
     }else {
-    $sql="INSERT INTO photos (nomPh) VALUES (NULL)";
-    mysqli_query($cnx, $sql);
-    $idPh=mysqli_insert_id($cnx);
+    $idPh=edit('photos',['nomPh'=>'NULL']);
     $tmp_name = $_FILES["nomPh"]["tmp_name"];
     $name = "ph_".$idPh.".jpg";
-    $sql="UPDATE `photos` SET `nomPh` = '".$name."' WHERE `photos`.`idPh` = ".$idPh;
-    mysqli_query($cnx, $sql);
+    edit('photos',['nomPh'=>$name],$idPh);
     move_uploaded_file($tmp_name, "photos/$name");
     foreach($_POST['album'] AS $idAlb){
-        $sql="INSERT INTO comporter (idAlb, idPh) VALUES ('".$idAlb."', '".$idPh."')";
-        mysqli_query($cnx, $sql);
+        edit('comporter',['idAlb'=>$idAlb,'idPh'=>$idPh]);
     }
     mysqli_close($cnx);
     header("Location: index.php?id=".$_GET['id']);
     }
 }
-/*
-    foreach ($_FILES["nomph"]["error"] as $key => $error) {
-        if ($error == 0) {
-            $tmp_name = $_FILES["nomph"]["tmp_name"][$key];
-            $name = basename($_FILES["nomph"]["name"][$key]);
-            move_uploaded_file($tmp_name, "./../htdocs/Albums/photos/$name");
-
-            $sql="INSERT INTO `photos` (`idPh`, `nomph`) VALUES (NULL, '$name')";
-            mysqli_query($cnx, $sql);
-        }
-    }*/
 ?>
