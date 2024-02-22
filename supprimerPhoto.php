@@ -39,7 +39,7 @@
         } else{
         delete('comporter',['comporter.idAlb'=>$idAlb, 'comporter.idPh'=>$id]);
         mysqli_close($cnx);
-        delete('photos',$id)
+        delete('photos',$id);
         header("Location: index.php?id=".$_GET['idAlb']);
         }
 }
