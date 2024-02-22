@@ -1,8 +1,7 @@
 <?php
+    include("fonctions.php");
     session_start();
-
     $cnx=mysqli_connect("localhost","root","","albums");
-    
     if (mysqli_connect_error()) {
         echo "Erreur de connexion � la base de donn�es : ".mysqli_connect_error();
         exit();
@@ -30,8 +29,9 @@
 </html>
 <?php
 } else {
-    $sql="SELECT * FROM user WHERE identifiant = '".$_POST['identifiant']."' AND mdp = '".$_POST['mdp']."'";
-    $res=mysqli_query($cnx, $sql);
+    $id=$_POST['identifiant'];
+    $mdp=$_POST['mdp'];
+    $res=select(['user'],['identifiant'=>$id,'mdp'=>$mdp],1);
     $nb=mysqli_num_rows($res);
     if ($nb==1){
         $_SESSION['admin']=true;

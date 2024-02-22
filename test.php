@@ -11,6 +11,10 @@
     //edit('photos',['nomPh'=>'']);
     //select(['photos','albums'],['photos.idPh'=>'comporter.idPh','idAlb'=>'id']);
     //echo select(['albums'],['idAlb'=>'id']);
-    $id=12;
-    echo delete('comporter',['idAlb'=>$id, 'idPh'=>$id]);
+    $id=1;
+    $idAlb=1;
+    //echo delete('comporter',['comporter.idAlb'=>$id, 'comporter.idPh'=>$id]);
+   
+    echo delete('comporter',['comporter.idAlb'=>$idAlb, 'comporter.idPh'=>$id]);
+    echo delete('photos',$id);
 ?>

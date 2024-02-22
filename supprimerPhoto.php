@@ -1,6 +1,7 @@
 <?php
     include("fonctions.php");
     $id=$_GET['id'];
+    $idAlb=$_GET['idAlb'];
     $cnx=mysqli_connect("localhost","root","","albums");
     
     if (mysqli_connect_error()) {
@@ -36,10 +37,9 @@
             mysqli_close($cnx);
             header("Location: index.php?id=".$_GET['idAlb']);
         } else{
-        //delete('comporter',['idAlb'=>$id, 'idPh'=>$id]);
-        $sql = "DELETE FROM comporter WHERE comporter.idAlb = ".$_GET['idAlb']." AND comporter.idPh = ".$_GET['id'];
-        mysqli_query($cnx, $sql);
+        delete('comporter',['comporter.idAlb'=>$idAlb, 'comporter.idPh'=>$id]);
         mysqli_close($cnx);
+        delete('photos',$id)
         header("Location: index.php?id=".$_GET['idAlb']);
         }
 }

@@ -23,6 +23,7 @@
         return ($table.".".mysqli_fetch_array($res)[0]);
     }
 
+
     function edit($table, $data, $id=NULL){
         global $cnx;
         if ($id==NULL){
@@ -57,7 +58,7 @@
         //return mysqli_query($cnx, $sql);
     }
 
-    function select($table, $data=NULL){
+    function select($table, $data=NULL, $paren=NULL){
         global $cnx;
         $sql = "SELECT * FROM ";
         foreach($table AS $champ){
@@ -66,8 +67,14 @@
         $sql=substr($sql,0,-2);
         if($data!=NULL){
             $sql.=" WHERE ";
-            foreach($data AS $champ=>$val){
-                $sql.=$champ."=".$val." AND ";
+            if ($paren==1){
+                foreach($data AS $champ=>$val){
+                    $sql.=$champ." = '".$val."'"." AND ";
+                }
+            }else{
+                foreach($data AS $champ=>$val){
+                    $sql.=$champ." = ".$val." AND ";
+                }
             }
             $sql=substr($sql,0,-5);
             return mysqli_query($cnx, $sql);

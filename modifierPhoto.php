@@ -50,7 +50,7 @@
             mysqli_close($cnx);
             header("Location: index.php?id=".$_GET['idAlb']);
         }else {
-        $sql=delete('comporter',['idPh'=>$id]);
+        delete('comporter',['idPh'=>$id]);
         foreach($_POST['album'] AS $idAlb){
             edit('comporter',['idAlb'=>$idAlb,'idPh'=>$id]);
         }
